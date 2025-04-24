@@ -62,11 +62,13 @@ struct QuestionsView: View {
     var body: some View {
         NavigationView{
             ZStack{
+                //Background
                 Image("wallpaper")
                     .resizable()
                     .frame(width: 900, height: 900)
                     .ignoresSafeArea()
                 VStack{
+                    //Keeping track of the player score
                     Text("Score: \(score)")
                         .padding()
                         .frame(width:300)
@@ -75,6 +77,7 @@ struct QuestionsView: View {
                         .font(.title)
                         .fontWeight(.semibold)
                         .cornerRadius(10)
+                    //The question that is being asked that we pull from the object
                     Text(arrayOfQuestions[currentQuestion].question)
                         .padding()
                         .frame(width:300)
@@ -83,18 +86,23 @@ struct QuestionsView: View {
                         .font(.title)
                         .fontWeight(.semibold)
                         .cornerRadius(10)
+                    //For loop basically to make all the buttons for the answers of the question
                     ForEach(arrayOfQuestions[currentQuestion].answers.indices, id:\.self){i in
                         Button(action:{
                             if arrayOfQuestions[currentQuestion].answers[i] == arrayOfQuestions[currentQuestion].correctAnswer{
+                                //If the button they chose is the same as the answer, they get a point
                                 score += 1
                             }
                             if currentQuestion < arrayOfQuestions.count-1{
+                                //If they chose a button then the question they're on will change
                                 currentQuestion += 1
                             }
                             else{
+                                //Once they hit the final question, they finish
                                 finish = true
                             }
                         }){
+                            //Basically its the answers that will show up
                             Text(arrayOfQuestions[currentQuestion].answers[i])
                                 .padding()
                                 .frame(width:300)
@@ -106,10 +114,12 @@ struct QuestionsView: View {
                         }
                     }
                     if finish == true{
+                        //Shows the navigation link to the finish page once they finish
                         NavigationLink(destination:{
                             FinishView(finalScore: score, total: arrayOfQuestions.count)
                                 .navigationBarBackButtonHidden()
                         }){
+                            //Very nice text wow!! Finish button name
                             Text("Finish!")
                                 .padding()
                                 .frame(width:300)
