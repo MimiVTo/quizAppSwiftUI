@@ -24,12 +24,37 @@ struct QuestionsView: View {
         //Fifth Question
         Questions(question: "Why is red velvet called that?", correctAnswer: "From its texture", answers: ["From its texture", "From it being on red velvet fabric", "From its taste", "From its creator's name"]),
         //Sixth Question
-        Questions(question: "What causes the red color in red velvet?", correctAnswer: "Chemical reaction", answers: ["From love", "Chemical reaction of ingredients", "Cherries", "Beet juices being mixed in"]),
+        Questions(question: "What causes the red color in red velvet?", correctAnswer: "Chemical reaction", answers: ["From love", "Chemical reaction", "Cherries", "Beet juices being mixed in"]),
         //Seventh Question
         Questions(question: "Who popularized red velvet?", correctAnswer: "Manhattan's Waldorf Astoria", answers: ["The Adams Extract Company", "Franklin D. Roosevelt", "Manhattan's Waldorf Astoria", "Marilyn Monroe"]),
         //Eighth Question
-        Questions(question: <#T##String#>, correctAnswer: <#T##String#>, answers: <#T##[String]#>),
+        Questions(question: "What holiday is red velvet cake important for?", correctAnswer: "Juneteenth", answers: ["Memorial Day", "Independence Day", "Veteran's Day", "Juneteenth"]),
+        //Ninth Question
+        Questions(question: "What was the original flavor of the frosting?", correctAnswer: "French-style buttercream", answers: ["German-style buttercream", "French-style buttercream", "Italian-style buttercream", "Russian-style buttercream"]),
+        //Tenth Question
+        Questions(question: "When did red velvet cake lose its initial popularity?", correctAnswer: "1970s", answers: ["1960s", "1990s", "1970s", "1980s"]),
+        //Eleventh Question
+        Questions(question: "What caused the emergence of red velvet cake?", correctAnswer: "Cocoa powder", answers: ["Cocoa powder", "Red 40", "Beetroot", "Buttermilk"]),
+        //Twelfth Question
+        Questions(question: "Where was red velvet cake made?", correctAnswer: "New York", answers: ["Chicago", "San Jose", "Los Angeles", "New York"]),
+        //Thirteenth Question
+        Questions(question: "Which part of America was red velvet made", correctAnswer: "South", answers: ["North", "East", "South", "West"]),
+        //Fourteenth Question
+        Questions(question: "What's an alternative name for red velvet cake?", correctAnswer: "Flame cake", answers: ["Tears of Mr.C's students", "Flame cake", "Beet cake", "Dolly Cake"]),
+        //Fifteenth Question
+        Questions(question: "What's a variant of red velvet cake?", correctAnswer: "Bundt cake", answers: ["Bundt cake", "Vanilla cake", "Carrot cake", "Chiffon cake"]),
+        //Sixteeth Question
+        Questions(question: "When did red velvet reach peak popularity?", correctAnswer: "Early 2000s", answers: ["Late 90s", "Late 2000s", "Early 90s", "Early 2000s"]),
+        //Seventeenth Question
+        Questions(question: "Why did red velvet lose its initial popularity?", correctAnswer: "Ban of red dye #2", answers: ["Ban of red dye #2", "Shortage of cococa powder", "Loss in interest", "Terrible taste"]),
+        //Eighteenth Question
+        Questions(question: "What does the red color symbolize for Juneteenth?", correctAnswer: "Strength", answers: ["Danger", "Courage", "Anger", "Strength"]),
+        //Nineteenth Question
+        Questions(question: "What does vinegar do for red velvet?", correctAnswer: "Creates vibrant hue", answers: ["Neutralizes sweetness", "Creates vibrant hue", "Creates softness", "Adds texture"]),
+        //Twentieth Question
+        Questions(question: "What variant of red velvet is most popular?", correctAnswer: "Cupcake", answers: ["Cake", "Cookie", "Cupcake", "Brownies"]),
     ]
+    //Keeping track of certain stuff variables
     @State var score: Int = 0
     @State var currentQuestion: Int = 0
     @State var finish: Bool = false
@@ -63,7 +88,7 @@ struct QuestionsView: View {
                             if arrayOfQuestions[currentQuestion].answers[i] == arrayOfQuestions[currentQuestion].correctAnswer{
                                 score += 1
                             }
-                            if currentQuestion != arrayOfQuestions.count{
+                            if currentQuestion < arrayOfQuestions.count-1{
                                 currentQuestion += 1
                             }
                             else{
@@ -82,7 +107,7 @@ struct QuestionsView: View {
                     }
                     if finish == true{
                         NavigationLink(destination:{
-                            FinishView()
+                            FinishView(finalScore: score, total: arrayOfQuestions.count)
                                 .navigationBarBackButtonHidden()
                         }){
                             Text("Finish!")

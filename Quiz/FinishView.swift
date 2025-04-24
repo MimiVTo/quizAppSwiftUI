@@ -8,11 +8,13 @@
 import SwiftUI
 
 struct FinishView: View {
-    
+    @State var finalScore : Int = 0
+    @State var total: Int = 0
+
     var body: some View {
         NavigationView{
             VStack{
-                Text("Congrats on Finishing!\nYour Score is")
+                Text("Congrats on Finishing!\nYour Score is \(finalScore)/\(total)")
                     .padding()
                     .frame(width:300, alignment: .center)
                     .background(Color(hex:"#84202b"))
