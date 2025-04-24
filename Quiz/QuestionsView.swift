@@ -69,9 +69,9 @@ struct QuestionsView: View {
                     .ignoresSafeArea()
                 VStack{
                     //Keeping track of the player score
-                    Text("Score: \(score)")
+                    Text("Current Question: \(currentQuestion+1)\nScore: \(score)")
                         .padding()
-                        .frame(width:300)
+                        .frame(width:300, alignment: .center)
                         .background(Color(hex:"#84202b"))
                         .foregroundColor(Color(hex:"#dfdac5"))
                         .font(.title)
