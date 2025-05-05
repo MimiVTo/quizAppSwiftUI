@@ -91,7 +91,9 @@ struct QuestionsView: View {
                         Button(action:{
                             if arrayOfQuestions[currentQuestion].answers[i] == arrayOfQuestions[currentQuestion].correctAnswer{
                                 //If the button they chose is the same as the answer, they get a point
-                                score += 1
+                                if finish == false{
+                                    score += 1
+                                }
                             }
                             if currentQuestion < arrayOfQuestions.count-1{
                                 //If they chose a button then the question they're on will change
